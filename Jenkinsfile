@@ -13,7 +13,7 @@ pipeline {
       }
       stage('Publish artifact') {
          steps {
-           archiveArtifacts 'example1'
+           archiveArtifacts 'example2'
          }
       }
    }
