@@ -1,6 +1,7 @@
 pipeline {
   agent any
 
+  stages{
     stage('Build image') {
         app = docker.build("jovanvelanac/assignment3")
     }
@@ -11,4 +12,5 @@ pipeline {
             app.push("latest")
         }
     }
+}
 }
