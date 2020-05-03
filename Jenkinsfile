@@ -3,13 +3,13 @@ pipeline {
 
     stages{
         stage('Build image') {
-            steps {
+            script {
                 app = docker.build("jovanvelanac/assignment3")
             }
         }
 
         stage('Push image') {
-            steps{
+            script{
                 docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials') {
                 app.push("${env.BUILD_NUMBER}")
                 app.push("latest")
