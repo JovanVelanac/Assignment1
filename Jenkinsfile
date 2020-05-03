@@ -1,6 +1,6 @@
 pipeline {
    agent any
-}
+
 
    stages {
       stage('Build') {
@@ -11,5 +11,4 @@ pipeline {
 
       stage('Push image') {
          steps {
-           docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials')}
-}
+           docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials')}}}}
