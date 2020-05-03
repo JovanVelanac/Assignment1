@@ -1,14 +1,9 @@
-node {
-    def app
-
-    stage('Build image') {
-        app = docker.build("jovanvelanac/assignment3")
-    }
-
-    stage('Push image') {
-        docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials') {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
-        }
-    }
-}
+pipeline {
+   agent any
+   stages {
+      
+      stage('Build image') {
+          steps {
+              sh 'sudo docker build -t jovanvelanac/assignment3:latest .'
+          }
+      }
