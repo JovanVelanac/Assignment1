@@ -1,14 +1,13 @@
 pipeline {
-   agent any
+  agent any
 
+  stage('Build') {
+    app = docker.build("jovanvelanac/assignment3")
+   }
 
-   stages {
-      stage('Build') {
-         steps {
-           sh 'sudo docker build --tag jovanvelanac/assignment3 .'
-         }
-      }
-
-      stage('Push image') {
-         steps {
-           docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials')}}}}
+  stage('Push image') {
+    docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials')
+  app.push("latest")
+}
+}
+}
