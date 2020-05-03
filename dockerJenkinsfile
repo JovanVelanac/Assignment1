@@ -1,12 +1,10 @@
 pipeline {
   agent
- { docker { image "golang:alpine"}
- }
+ { any
+}
   stages {
     stage('Build') {
       environment {
-        XDG_CACHE_HOME = '/tmp/.cache'
-      }
       steps {
         sh 'go build -o Assignment1'
       }

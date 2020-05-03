@@ -1,20 +1,15 @@
 pipeline {
    agent any
-
-   tools {
-    go { 'go-1.14.2' }
-   }
+}
 
    stages {
       stage('Build') {
          steps {
-           sh 'go build -o Assignment1'
+           sh 'sudo docker build --tag jovanvelanac/assignment3 .'
          }
       }
-      stage('Publish artifact') {
+
+      stage('Push image') {
          steps {
-           archiveArtifacts 'Assignment1'
-         }
-      }
-   }
+           docker.withRegistry('https://registry.hub.docker.com', 'docker-credentials')}
 }
