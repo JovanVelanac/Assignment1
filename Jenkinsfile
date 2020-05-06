@@ -1,11 +1,25 @@
 pipeline {
    agent any
+
+   tools {
+    go { 'go-1.14' }
+   }
+
    stages {
-      
-      stage('Build image') {
-          steps {
-              sh 'sudo docker build -t jovanvelanac/assignment3:latest .'
-          }
+      stage('Testing phase') {
+         steps {
+           sh 'go test'
+         }
       }
-    }
+      stage('Build') {
+         steps {
+           sh 'go build -o Assignment1'
+         }
+      }
+      stage('Publish artifact') {
+         steps {
+           archiveArtifacts 'Assignment1'
+         }
+      }
+   }
 }
