@@ -7,7 +7,13 @@ pipeline {
 
    stages {
       stage('Testing phase') {
-         steps {
+        environment {
+        XDG_CACHE_HOME = '/tmp/.cache'
+        GOOS='linux'
+        CGO_ENABLED='0'
+        GOARCH='amd64'
+      } 
+        steps {
            sh 'go test'
          }
       }
