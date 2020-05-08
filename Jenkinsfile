@@ -35,7 +35,12 @@ pipeline {
       }
       
       stage('Integration Test') {
-         steps {
+        agent{
+	docker {
+	image 'postman/newman'
+	args '--entrypoint='
+}} 
+	steps {
 	    sh 'docker run -t postman/newman:latest run "https://www.getpostman.com/collections/e28663e6208d00ce79d5"'
 		}
 }
