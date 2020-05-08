@@ -41,7 +41,7 @@ pipeline {
 	args '--entrypoint='
 }} 
 	steps {
-	    sh 'newman run postman/newman:latest run "https://www.getpostman.com/collections/e28663e6208d00ce79d5"'
+	    sh 'newman run "https://www.getpostman.com/collections/e28663e6208d00ce79d5"'
 		}
 }
    }
