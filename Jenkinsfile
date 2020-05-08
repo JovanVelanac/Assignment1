@@ -16,7 +16,6 @@ pipeline {
         steps {
            sh 'go test'
          }
-      }
       stage('Build') {
 	environment {
         XDG_CACHE_HOME = '/tmp/.cache'
