@@ -1,6 +1,7 @@
 pipeline {
    agent any
 
+
    tools {
     go { 'go-1.14.2' }
    }
@@ -33,16 +34,5 @@ pipeline {
            archiveArtifacts 'Assignment1'
          }
       }
-      
-      stage('Integration Test') {
-        agent{
-	docker {
-	image 'postman/newman'
-	args '--entrypoint='
-}} 
-	steps {
-	    sh 'newman run "https://www.getpostman.com/collections/e28663e6208d00ce79d5"'
-		}
-}
    }
 }
